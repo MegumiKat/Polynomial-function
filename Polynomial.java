@@ -1,6 +1,6 @@
 public class Polynomial{
     double[] coefficients;
-    public Polynomial(double coefficients[]){
+    public Polynomial(){
         this.coefficients = new double[]{0.0};
     }
     public Polynomial(double coefficients[]){
@@ -10,16 +10,16 @@ public class Polynomial{
         }
     }
 
-    public Polynomial add(double p){
-        int maxlengthe = Math.max(this.coefficients.length, p.length);
+    public Polynomial add(Polynomial p){
+        int maxlengthe = Math.max(this.coefficients.length, p.coefficients.length);
         double[] Newcoefficients = new double[maxlengthe];
 
         for(int i = 0; i < this.coefficients.length; i++){
             Newcoefficients[i] += this.coefficients[i];
         }
 
-        for(int i = 0; i < p.length; i++){
-            Newcoefficients[i] += p[i];
+        for(int i = 0; i < p.coefficients.length; i++){
+            Newcoefficients[i] += p.coefficients[i];
         }
 
         return Polynomial(Newcoefficients);
