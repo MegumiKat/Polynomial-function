@@ -22,7 +22,7 @@ public class Polynomial{
             Newcoefficients[i] += p.coefficients[i];
         }
 
-        return Polynomial(Newcoefficients);
+        return new Polynomial(Newcoefficients);
     }
 
     public double evaluate(double x){
