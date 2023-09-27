@@ -40,7 +40,7 @@ public class Polynomial{
             return result;
     }
 
-    public boolean hasResult(double y){
+    public boolean hasRoot(double y){
         return evaluate(y) == 0;
     }
 }
