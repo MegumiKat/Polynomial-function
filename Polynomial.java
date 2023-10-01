@@ -66,7 +66,6 @@ public class Polynomial{
             }
         }
 
-
         for(int i = 0; i < Newexponents.length; i++){
             for(int j = 0; j < this.exponents.length; j++){
                 if(Newexponents[i] == this.exponents[j]){
@@ -79,7 +78,26 @@ public class Polynomial{
                 }
             }
         }
-        return new Polynomial(Newcoefficients, Newexponents);
+
+        int k = 0;
+        int o = Newcoefficients.length;
+        for(int i = 0; i < Newcoefficients.length; i++){
+            if(Newcoefficients[i] == 0.0){
+                o -= 1;
+            }
+        }
+
+        int[] d_exponents = new int[o];
+        double[] d_coefficients = new double[o];
+        int j = 0;
+        for(int i = 0; i < Newexponents.length; i++){
+            if(Newcoefficients[i] != 0){
+                d_coefficients[j] = Newcoefficients[i];
+                d_exponents[j] = Newexponents[i];
+                j += 1;
+            }
+        }
+        return new Polynomial(d_coefficients, d_exponents);
     }
 
 
@@ -135,7 +153,26 @@ public class Polynomial{
                 }
             }
         }
-        return new Polynomial(r_coefficients, r_exponents);
+
+        int k = 0;
+        int o = r_coefficients.length;
+        for(int i = 0; i < r_coefficients.length; i++){
+            if(r_coefficients[i] == 0.0){
+                o -= 1;
+            }
+        }
+
+        int[] d_exponents = new int[o];
+        double[] d_coefficients = new double[o];
+        int j = 0;
+        for(int i = 0; i < r_coefficients.length; i++){
+            if(r_coefficients[i] != 0){
+                d_coefficients[j] = r_coefficients[i];
+                d_exponents[j] = r_exponents[i];
+                j += 1;
+            }
+        }
+        return new Polynomial(d_coefficients, d_exponents);
     }
 
 
@@ -230,12 +267,48 @@ public class Polynomial{
                 }
             }else{
                 if(this.coefficients[i] < 0){
-                    b.write(String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                    if(this.coefficients[i] == -1){
+                        if(this.exponents[i] == 1){
+                            b.write(String.valueOf("-x"));
+                        }else{
+                            b.write(String.valueOf("-x" + this.exponents[i]));
+                        }
+                    }else{
+                        if(this.exponents[i] == 1){
+                            b.write(String.valueOf(this.coefficients[i]) + "x");
+                        }else{
+                            b.write(String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                        }
+                    }
                 }else{
                     if(i==0){
-                        b.write(String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                        if(this.coefficients[i] == 1){
+                            if(this.exponents[i] == 1){
+                                b.write(String.valueOf("x"));
+                            }else{
+                                b.write(String.valueOf("x" + this.exponents[i]));
+                            }
+                        }else{
+                            if(this.exponents[i] == 1){
+                                b.write(String.valueOf(this.coefficients[i]) + "x");
+                            }else{
+                                b.write(String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                            }
+                        }
                     }else{
-                        b.write("+" + String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                        if(this.coefficients[i] == 1){
+                            if(this.exponents[i] == 1){
+                                b.write("+" + "x");
+                            }else{
+                                b.write("+" + "x" + this.exponents[i]);
+                            }
+                        }else{
+                            if(this.exponents[i] == 1){
+                                b.write("+" + String.valueOf(this.coefficients[i]) + "x");
+                            }else{
+                                b.write("+" + String.valueOf(this.coefficients[i]) + "x" + this.exponents[i]);
+                            }
+                        }
                     }
                 }
             }
