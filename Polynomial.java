@@ -66,6 +66,7 @@ public class Polynomial{
             }
         }
 
+
         for(int i = 0; i < Newexponents.length; i++){
             for(int j = 0; j < this.exponents.length; j++){
                 if(Newexponents[i] == this.exponents[j]){
